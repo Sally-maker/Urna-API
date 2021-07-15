@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  app:
+    container_name: 'api-urna'
+    env_file:
+      - .env
+    build: .
+    command: yarn dev
+    ports:
+      - '3333:3333'
+    volumes:
+      - .:/usr/app
