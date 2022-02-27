@@ -1,7 +1,6 @@
 if (process.env.NODE === 'development') {
   require('dotenv').config()
-  require('./config/database')
-  console.log('passou')
+  require('./config/database.js')
   const express = require('express')
   const cors = require('cors')
   const path = require('path')
@@ -21,7 +20,7 @@ if (process.env.NODE === 'development') {
   app.listen(port, () => console.info('[INFO] Server is running...'))
 } else {
   require('dotenv').config()
-  require('./config/database')
+  require('./config/database.js')
   const express = require('express')
   const cors = require('cors')
   const path = require('path')

@@ -1,8 +1,15 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
-mongoose
-  .createConnection(process.env.DATABASE_URI, {
+const {
+  DB_DATABASE,
+  DB_HOSTNAME,
+  DB_PORT,
+} = process.env
+
+mongoose.connect(
+  `mongodb://${DB_HOSTNAME}:${DB_PORT}/${DB_DATABASE}`,
+  {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-  })
-  .then(() => console.log('Rodando banco de dados'))
+  }
+).then(() => console.log("connected with successfully 🎃🍁"))
