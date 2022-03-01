@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 3333
 
-CMD ["yarn", "dev"]
+CMD ["yarn", "start"]

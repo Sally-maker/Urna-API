@@ -16,7 +16,7 @@ services:
             - db
         ports:
             - ${APP_PORT}:${APP_PORT}
-        command: yarn run dev
+        command: yarn run start
 
     db:
         image: mongo:latest
