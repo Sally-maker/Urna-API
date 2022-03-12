@@ -1,6 +1,6 @@
-const Candidates = require('../schema/Candidates')
-const User = require('../schema/Users')
-const AppError = require('../errors/AppError')
+const Candidates = require('../../schema/Candidates')
+const User = require('../../schema/Users')
+const AppError = require('../../errors/AppError')
 
 class VoteCandidateService {
   async execute({ codigo = 0, userId = 0 }) {

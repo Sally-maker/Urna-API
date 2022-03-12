@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose')
 
-const Candidates = model(
+const Candidate = model(
   'candidatos',
   new Schema({
     chapa: String,
@@ -10,4 +10,4 @@ const Candidates = model(
   })
 )
 
-module.exports = Candidates
+module.exports = Candidate

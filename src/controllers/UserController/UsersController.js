@@ -1,10 +1,10 @@
-const CreateUserService = require('../services/CreateUser.service')
-const User = require('../schema/Users')
+const CreateUserService = require('../../services/User/CreateUser.service')
+const { Users } = require('../../schema/Users')
 
 class UsersController {
   async index(request, response, next) {
     try {
-      const users = await User.find()
+      const users = await Users.find()
 
       return response.json(users)
     } catch (error) {
@@ -25,7 +25,7 @@ class UsersController {
 
       return response.status(201).json(user)
     } catch (error) {
-      return response.status(400).json(error)
+      next(error)
     }
   }
 }

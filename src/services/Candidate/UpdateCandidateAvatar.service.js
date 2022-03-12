@@ -1,7 +1,7 @@
 const fs = require('fs')
 const path = require('path')
-const Candidates = require('../schema/Candidates')
-const AppError = require('../errors/AppError')
+const Candidates = require('../../schema/Candidates')
+const AppError = require('../../errors/AppError')
 
 class UpdateCandidateAvatarService {
   async execute({ filename = '', candidateId = 0 }) {

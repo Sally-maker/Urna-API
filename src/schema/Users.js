@@ -9,4 +9,4 @@ const Users = model(
   })
 )
 
-module.exports = Users
+module.exports = { Users }

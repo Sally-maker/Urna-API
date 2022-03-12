@@ -1,5 +1,5 @@
-const Users = require('../schema/Users')
-const AppError = require('../errors/AppError')
+const Users = require('../../schema/Users')
+const AppError = require('../../errors/AppError')
 
 class CreateUserService {
   async execute({ codigo = 0, tipo = '' }) {

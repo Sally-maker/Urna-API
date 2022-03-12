@@ -1,19 +1,19 @@
-const SessionService = require('../services/Session.service')
+const AuthUser = require('../../services/User/AuthUser.service')
 
 class SessionController {
   async auth(request, response, next) {
     try {
       const { codigo } = request.body
 
-      const session = new SessionService()
+      const session = new AuthUser()
 
       const user = await session.execute(codigo)
 
       return response.status(200).json(user)
     } catch (error) {
-      return response.status(400).json(error)
+      next(error)
     }
   }
 }
 
-module.exports = SessionController
+module.exports = { SessionController }

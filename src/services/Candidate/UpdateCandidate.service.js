@@ -1,5 +1,5 @@
-const Candidates = require('../schema/Candidates')
-const AppError = require('../errors/AppError')
+const Candidates = require('../../schema/Candidates')
+const AppError = require('../../errors/AppError')
 
 class UpdateCandidateService {
   async execute({ _id = '', chapa = '', codigo = '' }) {

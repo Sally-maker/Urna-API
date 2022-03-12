@@ -6,8 +6,11 @@
   "author": "Teuuz1994 <matheus.rj.ig@gmail.com>",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-oauth2-jwt-bearer": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.11.13",
     "multer": "^1.4.2"
   },
@@ -18,7 +21,7 @@
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
-    "dotenv": "^8.2.0",
+    "dotenv": "^16.0.0",
     "eslint": "^7.18.0",
     "eslint-config-prettier": "^7.2.0",
     "eslint-config-standard": "^16.0.2",

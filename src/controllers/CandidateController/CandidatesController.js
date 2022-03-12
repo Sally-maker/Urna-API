@@ -1,10 +1,12 @@
-const VoteCandidateService = require('../services/VoteCandidate.service')
-const CreateCandidateService = require('../services/CreateCandidate.service')
-const DeleteCandidateService = require('../services/DeleteCandidate.service')
-const UpdateCandidateAvatarService = require('../services/UpdateCandidateAvatar.service')
-const UpdateCandidateService = require('../services/UpdateCandidate.service')
-const Candidate = require('../schema/Candidates')
-const AppError = require('../errors/AppError')
+const VoteCandidateService = require('../../services/Candidate/VoteCandidate.service')
+const {
+  CreateCandidateService,
+} = require('../../services/Candidate/CreateCandidate.service')
+const DeleteCandidateService = require('../../services/Candidate/DeleteCandidate.service')
+const UpdateCandidateAvatarService = require('../../services/Candidate/UpdateCandidateAvatar.service')
+const UpdateCandidateService = require('../../services/Candidate/UpdateCandidate.service')
+const Candidate = require('../../schema/Candidates')
+const AppError = require('../../errors/AppError')
 
 class CandidatesController {
   async index(request, response, next) {
@@ -49,6 +51,7 @@ class CandidatesController {
 
       return response.status(200).json(replacedCandidate)
     } catch (error) {
+      next(error)
       return response.status(error.statusCode).json(error)
     }
   }
@@ -67,6 +70,7 @@ class CandidatesController {
 
       return response.status(200).json(votedCandidate)
     } catch (error) {
+      next(error)
       return response.status(400).json(error)
     }
   }
@@ -86,6 +90,7 @@ class CandidatesController {
 
       return response.status(200).json(updatedCandidate)
     } catch (error) {
+      next(error)
       return response.status(400).json(error)
     }
   }
@@ -104,6 +109,7 @@ class CandidatesController {
 
       return response.status(200).json(updatedCandidate)
     } catch (error) {
+      next(error)
       return response.status(400).json(error)
     }
   }
@@ -111,14 +117,16 @@ class CandidatesController {
   async create(request, response, next) {
     try {
       const { chapa, codigo } = request.body
-      const filename = request.file.filename
+      const originalFileName = request.file.originalname
+      const imageBuffer = request.file.buffer
 
       const createCandidate = new CreateCandidateService()
 
       const candidate = await createCandidate.execute({
         chapa,
         codigo,
-        avatar: filename,
+        originalFileName,
+        imageBuffer,
       })
 
       return response.status(201).json(candidate)
@@ -137,9 +145,10 @@ class CandidatesController {
 
       return response.status(200).json(messageStatus)
     } catch (error) {
+      next(error)
       return response.status(400).json(error)
     }
   }
 }
 
-module.exports = CandidatesController
+module.exports = { CandidatesController }
